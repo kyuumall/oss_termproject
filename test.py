@@ -14,3 +14,13 @@ mood_grouping = {
                "enraged", "fuming", "outraged", "bad-tempered", "hot-tempered", "short-tempered", 
                "riled", "pissed"]
 }
+
+def sentence_checker(sentence):
+    sentence = sentence.lower()
+    sentence = sentence.replace("-", " ")
+
+    for p in ["!", "@", "#", "$", "%", "^", "&", "*", "_", ".", ",", "?", ";", ":", "'"]:
+        sentence = sentence.replace(p, "")
+
+    sentence = " ".join(sentence.split())
+    return sentence
