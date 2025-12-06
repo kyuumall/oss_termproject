@@ -72,6 +72,41 @@ def predicting_current_mood(text):
     
     return tied_moods[0]
 
+import time
+
+def weekly_update():
+    log_file = "mood_log.txt"
+    counts = {}
+    current_week = time.strftime("%U", time.localtime())
+
+    with open(log_file, encoding="utf-8") as f:
+        for line in f:
+            if not line.strip():
+                continue
+
+            section = line.strip().split(",")
+            if len(section) < 2:  # skip lines that don’t have date + mood
+                continue
+            
+            date_str = section[0].strip()
+            mood = section[1].strip()
+
+            entry_week = time.strftime("%U", time.strptime(date_str, "%Y-%m-%d %H:%M:%S %A"))
+
+            if entry_week == current_week:
+                if mood in counts:
+                    counts[mood] += 1
+                else:
+                    counts[mood] = 1
+
+    if counts:
+        print("This week:")
+        for m, c in counts.items():
+            print(f"{m} → {c}")
+    else:
+        print("No entries for this week yet.")
+
+
 if __name__ == "__main__":
     import time
 
@@ -79,11 +114,14 @@ if __name__ == "__main__":
     predicted_mood = predicting_current_mood(user_text)
 
     confirmation = input(f"Do you want to log your mood entry as '{predicted_mood}'? (Y/N) ")
-    
+
     if confirmation.lower() == "y":
-        timestamp = time.ctime()
-        with open("mood_entry.txt", "a", encoding="utf-8") as f:
-            f.write(f"{timestamp},{predicted_mood}\n")
-        print(f"Mood '{predicted_mood}' saved.")
+        timestamp = time.strftime("%Y-%m-%d %H:%M:%S %A", time.localtime())
+        with open("mood_log.txt", "a", encoding="utf-8") as f:
+            f.write(f"{timestamp}, {predicted_mood}, \"{user_text}\"\n")
+        print(f"Mood '{predicted_mood}' saved. \n")
+
+        weekly_update()
+
     else:
         print("Mood entry not saved.")
