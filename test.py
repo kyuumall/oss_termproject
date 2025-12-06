@@ -8,7 +8,7 @@ mood_grouping = {
 
     "sad"   : ["sad", "terrible", "depressed", "unhappy", "sorrowful", "dejected", "miserable", "low",
                "down", "gloomy", "blue", "melancholy", "melancholic", "low-spirited", "heartbroken",
-               "awful", "wretched", "sorry", "pitiful", "upset", "pathetic", "shameful", "dreadful",],
+               "awful", "wretched", "sorry", "pitiful", "upset", "pathetic", "shameful", "dreadful"],
 
     "angry" : ["angry", "furious", "mad", "annoyed", "irritated", "displeased", "provoked", "resentful",
                "enraged", "fuming", "outraged", "bad-tempered", "hot-tempered", "short-tempered", 
@@ -71,3 +71,19 @@ def predicting_current_mood(text):
         return user_choice.lower()
     
     return tied_moods[0]
+
+if __name__ == "__main__":
+    import time
+
+    user_text = input("What is your current mood today? ")
+    predicted_mood = predicting_current_mood(user_text)
+
+    confirmation = input(f"Do you want to log your mood entry as '{predicted_mood}'? (Y/N) ")
+    
+    if confirmation.lower() == "y":
+        timestamp = time.ctime()
+        with open("mood_entry.txt", "a", encoding="utf-8") as f:
+            f.write(f"{timestamp},{predicted_mood}\n")
+        print(f"Mood '{predicted_mood}' saved.")
+    else:
+        print("Mood entry not saved.")
