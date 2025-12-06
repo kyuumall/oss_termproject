@@ -24,3 +24,17 @@ def sentence_checker(sentence):
 
     sentence = " ".join(sentence.split())
     return sentence
+
+training_input = []
+training_mood = []
+
+with open("training_data.txt", "r", encoding="utf-8") as f:
+    for line in f:
+        line = line.strip()
+
+        if line.startswith('#') or line == "":
+            continue
+        input, mood = line.split(",")
+        input_checked = sentence_checker(input)
+        training_input.append(input_checked)
+        training_mood.append(mood)
