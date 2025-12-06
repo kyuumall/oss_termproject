@@ -1,18 +1,32 @@
 mood_grouping = {
-    "happy" : ["happy", "amazing", "wonderful", "excited", "contented", "cheerful", "cheery", 
-              "joyful", "jolly", "gleeful", "delighted", "smiling", "beaming", "grinning", 
-              "glowing", "satisfied", "blithe", "joyous", "beatific", "blessed", "thrilled", 
-              "elated", "exhilarated", "ecstatic", "blissful", "euphoric", "overjoyed", 
-              "on cloud nine", "over the moon", "glad", "fortunate", "lucky", "favourable",
-               "good", "right"],
+    "happy"    : ["happy", "amazing", "wonderful", "excited", "contented", "cheerful", "joyful", 
+                  "delighted", "smiling", "beaming", "grinning", "satisfied", "blessed", "elated", 
+                  "exhilarated", "ecstatic", "blissful", "euphoric", "overjoyed", "on cloud nine", 
+                  "over the moon", "glad", "fortunate", "lucky"],
 
-    "sad"   : ["sad", "terrible", "depressed", "unhappy", "sorrowful", "dejected", "miserable", "low",
-               "down", "gloomy", "blue", "melancholy", "melancholic", "low-spirited", "heartbroken",
-               "awful", "wretched", "sorry", "pitiful", "upset", "pathetic", "shameful", "dreadful"],
+    "sad"      : ["sad", "terrible", "depressed", "unhappy", "sorrow", "dejected", "miserable",
+                   "low", "down", "gloomy", "blue", "melancholy", "low-spirited", "heartbroken", 
+                   "awful", "wretched", "pitiful", "upset", "pathetic", "shameful", "dreadful"],
 
-    "angry" : ["angry", "furious", "mad", "annoyed", "irritated", "displeased", "provoked", "resentful",
-               "enraged", "fuming", "outraged", "bad-tempered", "hot-tempered", "short-tempered", 
-               "riled", "pissed"]
+    "angry"    : ["angry", "furious", "mad", "annoyed", "irritated", "displeased", "provoked", 
+                  "resentful", "enraged", "fuming", "outraged", "bad-tempered", "hot-tempered", 
+                  "short-tempered", "riled", "pissed", "annoying", "grumpy"],
+
+    "neutral"  : ["neutral", "okay", "fine", "good", "so-so", "alright", "nothing special", "normal",
+                  "average"],
+
+    "nervous"  : ["nervous", "anxious", "worried", "uneasy", "overthink", "restless", "uptight", "tense",
+                  "on edge", "apprehensive", "troubled", "hesitant", "concerned", "jumpy", "antsy", 
+                  "distraught", "nerve-racking"],
+
+    "tired"    : ["tired", "sleepy", "exhausted", "fatigued", "worn out", "drained", "drowsy", "burnt out",
+                  "overworked", "weary", "worn", "lethargic", "worn-down"],
+
+    "stressed" : ["stressed", "overwhelmed", "pressured", "tense", "distressed", "burdened", "burnout", 
+                  "overloaded", "strained", "overburdened", "on the rack", "stressed-out", "aggravated"],
+
+    "good"     : ["good", "great", "nice", "pleasant", "delightful", "pleasing", "fine", "adequate", 
+                  "decent", "tolerable", "passable" ]
 }
 
 def sentence_checker(sentence):
@@ -103,6 +117,11 @@ def weekly_update():
         print("This week:")
         for m, c in counts.items():
             print(f"{m} → {c}")
+
+        with open("weekly_summary.txt", "a", encoding="utf-8") as f:
+            summary = f"Week {current_week}: " + ", ".join(f"{m} → {c}" for m, c in counts.items())
+            f.write(summary + "\n")
+
     else:
         print("No entries for this week yet.")
 
@@ -117,8 +136,11 @@ if __name__ == "__main__":
 
     if confirmation.lower() == "y":
         timestamp = time.strftime("%Y-%m-%d %H:%M:%S %A", time.localtime())
+
+        tag = input("Any additional notes or tags? (press Enter to skip) ")
+
         with open("mood_log.txt", "a", encoding="utf-8") as f:
-            f.write(f"{timestamp}, {predicted_mood}, \"{user_text}\"\n")
+            f.write(f'{timestamp}, {predicted_mood}, "{user_text}", "{tag}"\n')
         print(f"Mood '{predicted_mood}' saved. \n")
 
         weekly_update()
