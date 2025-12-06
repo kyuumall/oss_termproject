@@ -48,3 +48,19 @@ def mood_counter(input):
                 emotion[mood] += 1
 
     return emotion
+
+def predicting_current_mood(input):
+    emotion = mood_counter(input)
+    max_value = max(emotion.values())
+
+    if max_value == 0:
+        return "neutral"
+    
+    tied_moods = [mood for mood, count in emotion.items() if count == max_value]
+
+    if len(tied_moods) > 1:
+        mood_options = " or ".join(tied_moods)
+        user_choice = input(f"I’m sorry but could you clarify again once more whether you feel {mood_options}? ")
+        return user_choice.lower()
+    
+    return tied_moods[0]
