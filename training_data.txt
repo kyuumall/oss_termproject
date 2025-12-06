@@ -1,0 +1,10 @@
+# Input, Mood
+
+I feel so happy today,happy
+This is amazing and wonderful,happy
+I'm excited for the event,happy
+I am sad,sad
+This is terrible,sad
+I feel so depressed,sad
+I am angry,angry
+This makes me furious,angry

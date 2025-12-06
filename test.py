@@ -8,7 +8,7 @@ mood_grouping = {
 
     "sad"   : ["sad", "terrible", "depressed", "unhappy", "sorrowful", "dejected", "miserable", "low",
                "down", "gloomy", "blue", "melancholy", "melancholic", "low-spirited", "heartbroken",
-               "awful", "wretched", "sorry", "pitiful", "upset", "pathetic", "shameful", "dreadful"],
+               "awful", "wretched", "sorry", "pitiful", "upset", "pathetic", "shameful", "dreadful",],
 
     "angry" : ["angry", "furious", "mad", "annoyed", "irritated", "displeased", "provoked", "resentful",
                "enraged", "fuming", "outraged", "bad-tempered", "hot-tempered", "short-tempered", 
@@ -25,7 +25,7 @@ def sentence_checker(sentence):
     sentence = " ".join(sentence.split())
     return sentence
 
-training_input = []
+training_text = []
 training_mood = []
 
 with open("training_data.txt", "r", encoding="utf-8") as f:
@@ -34,23 +34,30 @@ with open("training_data.txt", "r", encoding="utf-8") as f:
 
         if line.startswith('#') or line == "":
             continue
-        input, mood = line.split(",")
-        input_checked = sentence_checker(input)
-        training_input.append(input_checked)
+        text, mood = line.split(",")
+        text_checked = sentence_checker(text)
+        training_text.append(text_checked)
         training_mood.append(mood)
 
-def mood_counter(input):
+def mood_counter(text):
+    text = sentence_checker(text)
+    words = text.split()
     emotion = {mood: 0 for mood in mood_grouping}
 
     for mood, group in mood_grouping.items():
         for word in group:
-            if word in input:
-                emotion[mood] += 1
+            if " " in word:
+                if f" {word} " in f" {text} ":
+                    emotion[mood] += 1
+            
+            else:
+                if word in words:
+                    emotion[mood] += 1
 
     return emotion
 
-def predicting_current_mood(input):
-    emotion = mood_counter(input)
+def predicting_current_mood(text):
+    emotion = mood_counter(text)
     max_value = max(emotion.values())
 
     if max_value == 0:
