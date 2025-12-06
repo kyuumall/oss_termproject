@@ -38,3 +38,13 @@ with open("training_data.txt", "r", encoding="utf-8") as f:
         input_checked = sentence_checker(input)
         training_input.append(input_checked)
         training_mood.append(mood)
+
+def mood_counter(input):
+    emotion = {mood: 0 for mood in mood_grouping}
+
+    for mood, group in mood_grouping.items():
+        for word in group:
+            if word in input:
+                emotion[mood] += 1
+
+    return emotion
