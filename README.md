@@ -150,7 +150,6 @@ Python 3.10 and scikit-learn 1.3.2
 This project was developed by me, **Iqmal Nur Hazeeq**, using my own level understanding of Python code. I also used **ChatGPT** to assist with ideas and guidance on coding structure, explanations, and debugging. All implementations were written by me, and suggestions from ChatGPT were adapted to my level and understanding.
 
 
-
 ## 10. Future Improvements :thought_balloon:
 1. **Implement a GUI**
 - current program is using terminal/command prompt, so it looks very boring and basic
