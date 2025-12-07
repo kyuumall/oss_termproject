@@ -1,10 +1,90 @@
 # Input, Mood
-
 I feel so happy today,happy
 This is amazing and wonderful,happy
 I'm excited for the event,happy
+I feel so happy today after finishing my assignments,happy
+It was an amazing day with my friends,happy
+I had a wonderful time at the park,happy
+I am excited to start my new project,happy
+Feeling contented with how everything went today,happy
+She was cheerful when she heard the good news,happy
+I am joyful because I got a good grade,happy
+I am delighted to see everyone smiling,happy
+I am beaming after receiving a compliment,happy
+I feel blessed and overjoyed with my achievements,happy
 I am sad,sad
 This is terrible,sad
 I feel so depressed,sad
+I am feeling sad after hearing the news,sad
+It was a terrible day with so many problems,sad
+I feel depressed because I failed my exam,sad
+She is unhappy with the way things turned out,sad
+I feel sorrow over losing my favorite book,sad
+He looked dejected when he got rejected,sad
+I feel miserable sitting alone at home,sad
+I am low and down today,sad
+The gloomy weather makes me feel blue,sad
+I am heartbroken about our argument,sad
 I am angry,angry
 This makes me furious,angry
+I am so angry at the delay in delivery,angry
+She was furious when she saw the mistake,angry
+I am mad because no one listened to me,angry
+I feel annoyed with all the interruptions,angry
+I am irritated by his constant complaints,angry
+I am displeased with the service,angry
+He felt provoked by the rude comment,angry
+I am enraged at how unfair this is,angry
+I was fuming after being ignored,angry
+She is grumpy because she didn’t sleep well,angry
+I feel neutral about today's events,neutral
+It’s an okay day,neutral
+Everything is fine for now,neutral
+The situation is good,neutral
+My day was so-so,neutral
+I feel alright today,neutral
+The result is normal,neutral
+It’s an average day,neutral
+Nothing special happened today,neutral
+I feel neither good nor bad,neutral
+I feel nervous about the presentation,nervous
+She is anxious waiting for the results,nervous
+I am worried because I haven't prepared,nervous
+I feel uneasy about meeting new people,nervous
+I overthink everything before making a decision,nervous
+I feel restless before the exam,nervous
+He was uptight about the interview,nervous
+I am tense waiting for the reply,nervous
+She feels apprehensive about the journey,nervous
+I am jumpy because of the sudden noise,nervous
+I feel tired after a long day,tired
+She is sleepy and wants to rest,tired
+I am exhausted from working all day,tired
+I feel fatigued after the gym,tired
+I am worn out from all the tasks,tired
+I feel drained after the meeting,tired
+I am drowsy during the lecture,tired
+He is burnt out after the project,tired
+I feel overworked and weary,tired
+I am worn-down and need sleep,tired
+I feel stressed because of deadlines,stressed
+She is overwhelmed with her workload,stressed
+I am pressured to finish everything on time,stressed
+I feel tense and uneasy about the project,stressed
+I am distressed about the bad news,stressed
+He feels burdened with responsibilities,stressed
+I am on the verge of burnout,stressed
+I feel overloaded with tasks,stressed
+I am overburdened and on the rack,stressed
+She is stressed-out from all the planning,stressed
+I feel good about my performance today,good
+The weather is great and refreshing,good
+I had a nice time with my friends,good
+It was a pleasant day overall,good
+I had a delightful meal,good
+The results are pleasing and satisfying,good
+I feel fine after finishing the work,good
+The performance was adequate for the requirements,good
+The work was decent and acceptable,good
+Everything went tolerable and smooth,good
+

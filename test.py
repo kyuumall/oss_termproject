@@ -159,6 +159,40 @@ def weekly_update():
     else:
         print("No entries for this week yet.")
 
+def filter_by_mood(mood_to_filter):
+    try:
+        with open("mood_log.txt", encoding="utf-8") as f:
+            found = False
+            print(f"\nEntries for mood '{mood_to_filter}':\n")
+            for line in f:
+                parts = line.strip().split(",")
+                if len(parts) < 4:
+                    continue
+                
+                date_str = parts[0].strip()
+                mood = parts[1].strip().lower()
+                user_text = parts[2].strip().strip('"')
+                tag = parts[3].strip().strip('"')
+                
+                if mood == mood_to_filter:
+                    print(f"- {date_str}: {user_text} | Note: {tag}")
+                    found = True
+
+            if not found:
+                print(f"No entries were found.\n")
+
+    except FileNotFoundError:
+        print("Mood log file not found. No entries to show.\n")
+
+def view_mood_log():
+    choice = input("\nDo you want to see past mood entries? (Y/N) ").lower()
+
+    if choice != "y":
+        print("Your mood has been saved. Have a good day!\n")
+        return
+
+    mood_to_filter = input("Enter the mood you want to view (e.g., happy, sad, angry): ").lower()
+    filter_by_mood(mood_to_filter)
 
 if __name__ == "__main__":
     import time
@@ -178,6 +212,7 @@ if __name__ == "__main__":
         print(f"Mood '{predicted_mood}' saved. \n")
 
         weekly_update()
+        view_mood_log()
 
     else:
         print("Mood entry not saved.")
