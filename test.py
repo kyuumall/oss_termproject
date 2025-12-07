@@ -53,6 +53,24 @@ with open("training_data.txt", "r", encoding="utf-8") as f:
         training_text.append(text_checked)
         training_mood.append(mood)
 
+vocab = []
+for group in mood_grouping.values():
+    vocab.extend(group)
+vocab = list(set(vocab))
+
+def text_to_features(text):
+    text = sentence_checker(text)
+    words = set(text.split())
+    return [1 if word in words else 0 for word in vocab]
+
+X_train = [text_to_features(t) for t in training_text]
+y_train = training_mood
+
+from sklearn.tree import DecisionTreeClassifier
+
+model = DecisionTreeClassifier(random_state=42)
+model.fit(X_train, y_train)
+
 def mood_counter(text):
     text = sentence_checker(text)
     words = text.split()
@@ -71,6 +89,9 @@ def mood_counter(text):
     return emotion
 
 def predicting_current_mood(text):
+    features = [text_to_features(text)]
+    predicted = model.predict(features)[0]
+
     emotion = mood_counter(text)
     max_value = max(emotion.values())
 
@@ -80,11 +101,24 @@ def predicting_current_mood(text):
     tied_moods = [mood for mood, count in emotion.items() if count == max_value]
 
     if len(tied_moods) > 1:
-        mood_options = " or ".join(tied_moods)
-        user_choice = input(f"I’m sorry but could you clarify again once more whether you feel {mood_options}? ")
-        return user_choice.lower()
+        tied_moods.append("neutral")
+        
+        print("You are feeling:")
+        for i, mood in enumerate(tied_moods, 1):
+            print(f"{i}. {mood}")
+        
+        try:
+            choice = int(input("Type the number that describe your current mood the best! "))
+            selected_mood = tied_moods[choice - 1]
+
+        except (ValueError, IndexError):
+            print("Invalid.")
+            selected_mood = input("Please type your current mood manually: ").lower()
+
+    else:
+        selected_mood = predicted.lower()
     
-    return tied_moods[0]
+    return selected_mood
 
 import time
 
@@ -99,7 +133,7 @@ def weekly_update():
                 continue
 
             section = line.strip().split(",")
-            if len(section) < 2:  # skip lines that don’t have date + mood
+            if len(section) < 2:
                 continue
             
             date_str = section[0].strip()
