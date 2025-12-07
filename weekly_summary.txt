@@ -2,3 +2,4 @@ Week 49: happy → 1, tired → 1
 Week 49: happy → 1, tired → 1, good → 1
 Week 49: happy → 2, tired → 1, good → 1
 Week 49: nervous → 1
+Week 49: nervous → 1, happy → 1
