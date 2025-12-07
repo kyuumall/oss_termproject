@@ -9,8 +9,9 @@
 - [Code Description](#6-code-description) :computer::mag_right:
 - [Image](#7-image) :framed_picture:
 - [Information / Sources / Reference](#8-information--sources--reference) :link:
-- [Future Improvements](#9-future-improvements) :thought_balloon:
-- [License](#10-license) :bookmark_tabs:
+- [Acknowledgements](#9-acknowledgements) :handshake:
+- [Future Improvements](#10-future-improvements) :thought_balloon:
+- [License](#11-license) :bookmark_tabs:
 
 
 
@@ -144,8 +145,13 @@ Python 3.10 and scikit-learn 1.3.2
 [Python Emoji Template](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md) - reference emoji in Python
 [Inspiration](https://daylio.net/) - inspired mood tracking ideas
 
+## 9. Acknowledgements :handshake:
 
-## 9. Future Improvements :thought_balloon:
+This project was developed by me, **Iqmal Nur Hazeeq**, using my own level understanding of Python code. I also used **ChatGPT** to assist with ideas and guidance on coding structure, explanations, and debugging. All implementations were written by me, and suggestions from ChatGPT were adapted to my level and understanding.
+
+
+
+## 10. Future Improvements :thought_balloon:
 1. **Implement a GUI**
 - current program is using terminal/command prompt, so it looks very boring and basic
 - can implement python based GUI such as tkinter
@@ -158,7 +164,7 @@ Python 3.10 and scikit-learn 1.3.2
 - Having too much log at once may be overwhelming to some people
 - can implement graph or chart for better visualization  
 
-## 10. License :bookmark_tabs:
+## 11. License :bookmark_tabs:
 This project is licensed under the MIT License
 
 MIT License
