@@ -120,8 +120,6 @@ def predicting_current_mood(text):
     
     return selected_mood
 
-import time
-
 def weekly_update():
     log_file = "mood_log.txt"
     counts = {}
